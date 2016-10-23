@@ -35,7 +35,7 @@
 							"extension/javascript/content.js"
 						],
 			"css": [
-
+				"extension/stylesheets/content.css"
       ],
 			"matches": [ "http://*/*", "https://*/*"],
 			"all_frames": false

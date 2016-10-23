@@ -1,0 +1,21 @@
+.chrome-shell-button {
+	display:block;
+	cursor: pointer;
+	text-align: center;
+	border: rgba(0, 0, 0, 0.5);
+	width: 30px;
+	height: 30px;
+	border-radius: 2px;
+}
+
+#chrome-shell-base-button{
+	border-radius: 100px;
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+	color: #3b4446;
+	float: right;
+	font-family: GothamMedium, Helvetica, Arial, sans-serif;
+	font-size: 14px;
+	margin: 0 2px;
+	padding: 14px 14px 14px;
+	text-shadow: none;
+}

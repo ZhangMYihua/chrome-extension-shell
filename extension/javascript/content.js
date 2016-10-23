@@ -21,9 +21,9 @@ $(document).ready(function(){
 
 			// store iframe
 			iframes[id] = {
-				"id" : id
+				"id" : id,
 				"iframe" : iframe,
-				"isLoaded" : false,
+				"isLoaded" : false
 			};
 
 			// append iframe
@@ -42,6 +42,18 @@ $(document).ready(function(){
 	};
 
 	initializeIframes();
+
+	function initializeButtons(){
+		setTimeout(function(){
+			var baseButtonImageSrc = chrome.extension.getURL('assets/images/boost-chrome-icon-48.png');
+			var baseButtonStyle = "position: fixed; float: right; z-index: 2147483647; bottom: 7px; right: 5px; background-image: url(" + baseButtonImageSrc + "); background-position: 50% 50%; background-repeat: no-repeat;";
+			var $baseButton = $("<div/>", {id: "chrome-shell-base-button", class: "chrome-shell-button", style: baseButtonStyle});
+
+			$('html').append($baseButton);			
+		}, 1);
+	};
+
+	initializeButtons();
 
 
 });
