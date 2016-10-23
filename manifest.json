@@ -35,6 +35,7 @@
 							"extension/javascript/content.js"
 						],
 			"css": [
+				"assets/stylesheets/animate.css",
 				"extension/stylesheets/content.css"
       ],
 			"matches": [ "http://*/*", "https://*/*"],
