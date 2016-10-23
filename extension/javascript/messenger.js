@@ -14,37 +14,27 @@ var MessengerService = function(scriptSource) {
 
   var fac = {};
 
-  fac.content = {
-    "sendMessage" : function(message, data){
-      var d = $.Deferred();
-      data = data || {};
-      data.sender = "content";
+  function generateChromeMessenger(messengerSource){
+    return {
+      "sendMessage" : function(message, data){
+        var d = $.Deferred();
+        data = data || {};
+        data.sender = messengerSource;
 
-      chrome.runtime.sendMessage({
-        message: message,
-        data: data
-      }, function(response){
-        d.resolve(response);
-      });
-      return d.promise();
-    }
+        chrome.runtime.sendMessage({
+          message: message,
+          data: data
+        }, function(response){
+          d.resolve(response);
+        });
+        return d.promise();
+      }
+    };
   };
 
-  fac.popup = {
-    "sendMessage" : function(message, data){
-      var d = $.Deferred();
-      data = data || {};
-      data.sender = "popup";
+  fac.content = generateChromeMessenger("content");
 
-      chrome.runtime.sendMessage({
-        message: message,
-        data: data
-      }, function(response){
-        d.resolve(response);
-      });
-      return d.promise();
-    }
-  };
+  fac.popup = generateChromeMessenger("popup");
 
   fac.iframe = {
     "sendMessage" : function(message, data){
