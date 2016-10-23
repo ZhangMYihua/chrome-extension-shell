@@ -1,0 +1,3 @@
+var Messenger = MessengerService("background");
+
+

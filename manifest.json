@@ -16,8 +16,7 @@
 
 	"web_accessible_resources": [	"assets/images/*",
 																"extension/iframes/*",
-                                "extension/templates/*",
-																"extension/stylesheets/popup.css"
+                                "extension/templates/*"
 															],
 
 	"background": {
@@ -32,13 +31,11 @@
 			"run_at" : "document_idle",
 			"js": [	"assets/javascript/jquery-2.1.4.min.js",
               "assets/javascript/lodash.min.js",
-              "extension/javascript/init.js",
 							"extension/javascript/messenger.js",
-							"extension/javascript/helper.js",
 							"extension/javascript/content.js"
 						],
 			"css": [
-        "extension/stylesheets/content.css"
+
       ],
 			"matches": [ "http://*/*", "https://*/*"],
 			"all_frames": false
