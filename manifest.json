@@ -1,0 +1,55 @@
+{
+	"name": "chrome-shell",
+	"description": "A quick shell that sits over chrome",
+	"version": "0.0.1",
+	"manifest_version": 2,
+
+	"browser_action": {
+		"default_icon": "assets/images/boost-icon-128.png"
+	},
+
+	"icons": {
+		"16": "assets/images/boost-chrome-icon-16.png",
+		"48": "assets/images/boost-chrome-icon-48.png",
+    "128": "assets/images/boost-icon-128.png"
+  },
+
+	"web_accessible_resources": [	"assets/images/*",
+																"extension/iframes/*",
+                                "extension/templates/*",
+																"extension/stylesheets/popup.css"
+															],
+
+	"background": {
+		"scripts" : [	
+									"assets/javascript/jquery-2.1.4.min.js",
+									"assets/javascript/lodash.min.js"
+								]
+	},
+
+	"content_scripts": [
+		{
+			"run_at" : "document_idle",
+			"js": [	"assets/javascript/jquery-2.1.4.min.js",
+              "assets/javascript/lodash.min.js",
+              "extension/javascript/init.js",
+							"extension/javascript/messenger.js",
+							"extension/javascript/helper.js",
+							"extension/javascript/content.js"
+						],
+			"css": [
+        "extension/stylesheets/content.css"
+      ],
+			"matches": [ "http://*/*", "https://*/*"],
+			"all_frames": false
+		}
+	],
+
+	"permissions": [
+		 "tabs",
+		 "bookmarks",
+		 "activeTab",
+		 "contextMenus",
+		 "storage"
+	]
+}
