@@ -43,17 +43,31 @@ $(document).ready(function(){
 
 	initializeIframes();
 
+	function generateButtonTemplate(buttonId, assetUrl){
+		var imageSrc = chrome.extension.getURL(assetUrl);
+		var buttonStyle = "background-image: url(" + imageSrc + "); background-position: 50% 50%; background-repeat: no-repeat;";
+		return $("<div/>", {id: buttonId, class: "chrome-shell-button", style: buttonStyle });
+	};
+
 	function initializeButtons(){
 		setTimeout(function(){
-			var baseButtonImageSrc = chrome.extension.getURL('assets/images/boost-chrome-icon-48.png');
-			var baseButtonStyle = "position: fixed; float: right; z-index: 2147483647; bottom: 7px; right: 5px; background-image: url(" + baseButtonImageSrc + "); background-position: 50% 50%; background-repeat: no-repeat;";
-			var $baseButton = $("<div/>", {id: "chrome-shell-base-button", class: "chrome-shell-button", style: baseButtonStyle});
+			var $baseButton = generateButtonTemplate("chrome-shell-base-button", "assets/images/boost-chrome-icon-48.png");
+			var $homeButton = generateButtonTemplate("chrome-shell-home-button", "assets/images/home-btn.png");
+			var $messagesButton = generateButtonTemplate("chrome-shell-messages-button", "assets/images/messages-btn.png");
+			var $uploadButton = generateButtonTemplate("chrome-shell-upload-button", "assets/images/upload-btn.png");
+			var $screenshotButton = generateButtonTemplate("chrome-shell-screenshot-button", "assets/images/screenshot-btn.png");
 
-			$('html').append($baseButton);			
+			$('html').append($baseButton);
+			$('html').append($homeButton);
+			$('html').append($uploadButton);
+			$('html').append($messagesButton);
+			$('html').append($screenshotButton);
 		}, 1);
 	};
 
 	initializeButtons();
+
+
 
 
 });
