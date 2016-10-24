@@ -6,7 +6,7 @@ $(document).ready(function(){
 	var containerStyle = "position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); z-index: 2147483646; display:flex; justify-content:center; align-items:center;";
 	var $container = $('<div/>', {id: "chrome-shell-top-container", style: containerStyle});
 
-	var $baseButton, 
+	var $baseButton,
 				$homeButton,
 					$messagesButton,
 						$uploadButton,
@@ -66,7 +66,6 @@ $(document).ready(function(){
 		$screenshotButton = generateButtonTemplate("chrome-shell-screenshot-button", "assets/images/screenshot-btn.png");
 
 		$('html').append($baseButton);
-		
 		$('html').append($homeButton);
 		$homeButton.hide();
 		$('html').append($uploadButton);
@@ -107,8 +106,66 @@ $(document).ready(function(){
 
 	$baseButton.click(boostButtonClicked);
 
+  function generateChatWindow(){
+    var $popup = $("<div/>", {id: "chrome-shell-chat-popup"});
+    var $messagesContainer = $("<div/>", {id: "chrome-shell-chats-window-container"});
+    $popup.append($messagesContainer);
+
+    var $messagesFlexContainer = $("<div/>", {id: "chrome-shell-chats-window-flex-container"});
+    $messagesContainer.append($messagesFlexContainer)
+
+    var $headerContainer = $("<div/>", {id: "chrome-shell-chat-window-header-container"});
+    $messagesFlexContainer.append($headerContainer);
+
+    var $header = $("<div/>", {id: "chrome-shell-chat-window-header"});
+    $headerContainer.append($header);
+
+
+
+    var $channelImage = $("<img/>", {class: "square-image", src: chrome.extension.getURL("assets/images/default-channel-image.png"), style: "margin-right: 5px;"});
+    $header.append($channelImage);
+
+    var $headerTitle = $("<div/>", {id: "chrome-shell-header-title"});
+    $headerTitle.append("BoostHQ Team");
+
+    $header.append($headerTitle);
+
+    var $messagesBox = $("<div/>", {id: "chrome-shell-chat-window-container"});
+
+    $messagesFlexContainer.append($messagesBox);
+
+    return $popup;
+  };
+
+  function generateSelfMessageDiv(text){
+    var $myMessage = $("<div/>", {class: "chrome-shell-message-container chrome-shell-self-message"});
+    $myMessage.append(text);
+    return $myMessage;
+  };
+
+  function generateOtherMessageDiv(text){
+    var $otherMessage = $("<div/>", {class: "chrome-shell-message-container chrome-shell-others-message"});
+    $otherMessage.append(text);
+    return $otherMessage;
+  };
+
 	function initializeChat(){
-		$chatWindow = $("<div/>", {id: "chrome-shell-chat-window"});
+		$chatWindow = generateChatWindow();
+
+    var $otherChat1 = generateOtherMessageDiv("Check out the 2nd paragraph, this is exactly what we want");
+    var $otherChat2 = generateOtherMessageDiv("I agree, lets implement this");
+    var $otherChat3 = generateOtherMessageDiv("But what about our existing providers? We're still signed with them for another quarter.");
+    var $otherChat4 = generateOtherMessageDiv("Mark, what do you think about this?");
+    var $selfChat1 = generateSelfMessageDiv("We can pay off the rest of the contract immediately and exit.");
+
+    var $messages = $chatWindow.find("#chrome-shell-chat-window-container");
+
+    $messages.append($otherChat1);
+    $messages.append($otherChat2);
+    $messages.append($otherChat3);
+    $messages.append($selfChat1);
+    $messages.append($otherChat4);
+
 		$('html').append($chatWindow);
 		$chatWindow.hide();
 	};
