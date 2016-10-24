@@ -6,7 +6,12 @@ $(document).ready(function(){
 	var containerStyle = "position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); z-index: 2147483646; display:flex; justify-content:center; align-items:center;";
 	var $container = $('<div/>', {id: "chrome-shell-top-container", style: containerStyle});
 
-	var $baseButton, $homeButton, $messagesButton, $uploadButton, $screenshotButton;
+	var $baseButton, 
+				$homeButton,
+					$messagesButton,
+						$uploadButton,
+							$screenshotButton,
+								$chatWindow;
 
 	// iframes
 	var iframes = {};
@@ -74,19 +79,23 @@ $(document).ready(function(){
 
 	initializeButtons();
 
-	function toggleButton(button){
-		var $button = $(button);
+	function fadeInToggle(element){
+		var $element = $(element);
 
-		if($button.hasClass("fadeInRight")){
-			$button.removeClass("fadeInRight").addClass("fadeOutRight");
-			$button.one('oanimationend animationend', function(){
-				$button.hide();
-				$button.removeClass("fadeOutRight");
+		if($element.hasClass("fadeInRight")){
+			$element.removeClass("fadeInRight").addClass("fadeOutRight");
+			$element.one('oanimationend animationend', function(){
+				$element.hide();
+				$element.removeClass("fadeOutRight");
 			});
 		} else {
-			$button.show();
-			$button.addClass("animated fadeInRight");
+			$element.show();
+			$element.addClass("animated fadeInRight");
 		}
+	}
+
+	function toggleButton(button){
+		fadeInToggle(button);
 	};
 
 	function boostButtonClicked(){
@@ -98,5 +107,18 @@ $(document).ready(function(){
 
 	$baseButton.click(boostButtonClicked);
 
+	function initializeChat(){
+		$chatWindow = $("<div/>", {id: "chrome-shell-chat-window"});
+		$('html').append($chatWindow);
+		$chatWindow.hide();
+	};
+
+	initializeChat();
+
+	function toggleChat(){
+		fadeInToggle($chatWindow);
+	};
+
+	$messagesButton.click(toggleChat);
 
 });
