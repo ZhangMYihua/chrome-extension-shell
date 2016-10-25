@@ -218,7 +218,7 @@ html {
 .chrome-shell-chat-window-header-container {
   -webkit-box-flex: 0;
   flex: 0 0 auto;
-  height: 60px
+  height: 80px;
   background-color: #e0e0e0;
   padding: 0;
 }
