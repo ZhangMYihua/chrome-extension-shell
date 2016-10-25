@@ -1,0 +1,21 @@
+<script id="chrome-shell-chat-message-template" type="text/html">
+  <div class="text-left m-b-20">
+    <div class="col-2">
+      <img src="<%= userObj.avatarUrl %>" class="chrome-shell-user-avatar pull-right m-t-5">
+    </div>
+    <div class="col-10">
+      <div class="chrome-shell-chat-receiver-full">
+        <%= userObj.comment %>
+      </div>
+
+      <div class="clearfix">
+      </div>
+
+      <div class="p-l-20 dark-grey f-10">
+        <strong>
+          <%= userObj.commenter %>
+        </strong>
+      </div>
+    </div>
+  </div>
+</script>
