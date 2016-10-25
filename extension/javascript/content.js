@@ -14,7 +14,32 @@ $(document).ready(function(){
 								$chatWindow;
 
 	// iframes
-	var iframes = {};
+	var iframes = {},
+  // templates
+      _templates = {};
+
+
+  function getTemplate(templateName){
+    var templateId = "#chrome-shell-" + templateName + "-template";
+
+    var d = $.Deferred();
+    if(!_templates[templateName]){
+      $.get(chrome.extension.getURL('extension/templates/' + templateName + '.html')).then(function(template){
+        var $template = $(template);
+        _templates[templateName] = $template.filter(templateId).html();
+        d.resolve();
+      });
+    } else {
+      d.resolve();
+    }
+
+    d.then(function(){
+      var t = _templates[templateName] || "";
+      console.log(t)
+      return t;
+    });
+  };
+
 
 	function setIframe(id, styleString, target){
 		target = target || $container;
@@ -108,11 +133,9 @@ $(document).ready(function(){
 
   function generateChatWindow(){
     var $popup = $("<div/>", {id: "chrome-shell-chat-popup"});
-    var $messagesContainer = $("<div/>", {id: "chrome-shell-chats-window-container"});
-    $popup.append($messagesContainer);
 
     var $messagesFlexContainer = $("<div/>", {id: "chrome-shell-chats-window-flex-container"});
-    $messagesContainer.append($messagesFlexContainer)
+    $popup.append($messagesFlexContainer);
 
     var $headerContainer = $("<div/>", {id: "chrome-shell-chat-window-header-container"});
     $messagesFlexContainer.append($headerContainer);
@@ -130,7 +153,7 @@ $(document).ready(function(){
 
     $header.append($headerTitle);
 
-    var $messagesBox = $("<div/>", {id: "chrome-shell-chat-window-container"});
+    var $messagesBox = $("<div/>", {id: "chrome-shell-chat-box-container"});
 
     $messagesFlexContainer.append($messagesBox);
 
@@ -150,6 +173,9 @@ $(document).ready(function(){
   };
 
 	function initializeChat(){
+    getTemplate("chat-box");
+
+
 		$chatWindow = generateChatWindow();
 
     var $otherChat1 = generateOtherMessageDiv("Check out the 2nd paragraph, this is exactly what we want");
@@ -158,7 +184,7 @@ $(document).ready(function(){
     var $otherChat4 = generateOtherMessageDiv("Mark, what do you think about this?");
     var $selfChat1 = generateSelfMessageDiv("We can pay off the rest of the contract immediately and exit.");
 
-    var $messages = $chatWindow.find("#chrome-shell-chat-window-container");
+    var $messages = $chatWindow.find("#chrome-shell-chat-box-container");
 
     $messages.append($otherChat1);
     $messages.append($otherChat2);

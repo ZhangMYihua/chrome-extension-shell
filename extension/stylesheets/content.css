@@ -60,29 +60,23 @@ html {
 /*chats*/
 
 
-#chrome-shell-chat-popup {
+.chrome-shell-chat-popup-container {
 	position: fixed;
-	float: right;
 	z-index: 2147483646;
 	display:block;
+  height: 450px;
+  width: 300px;
   border-left: 1px solid rgba(0,0,0,.1);
   border-right: 3px solid rgba(0,0,0,.1);
   border-top: 2px solid rgba(0,0,0,.1);
   border-bottom: 2px solid rgba(0,0,0,.1);
-	width: 300px;
-	right: 15px;
+  right: 15px;
 	bottom: 85px;
-}
-
-#chrome-shell-chats-window-container {
-  -webkit-box-flex: 0;
-  flex: 0 0 auto;
-  height: 450px;
   background-color: #eeeeee;
   padding: 0;
 }
 
-#chrome-shell-chats-window-flex-container {
+.chrome-shell-chats-window-flex-container {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -91,7 +85,7 @@ html {
   overflow: hidden;
 }
 
-#chrome-shell-chat-window-header-container {
+.chrome-shell-chat-window-header-container {
   -webkit-box-flex: 0;
   flex: 0 0 auto;
   height: 60px
@@ -99,7 +93,7 @@ html {
   padding: 0;
 }
 
-#chrome-shell-chat-window-header {
+.chrome-shell-chat-window-header {
   position: absolute;
   display: flex;
   -webkit-box-align: center;
@@ -110,25 +104,35 @@ html {
   background-color: #fff;
 }
 
-#chrome-shell-header-title {
+.chrome-shell-header-title {
   -webkit-box-flex: 1;
   flex: 1;
   padding: 0 0 0 15px;
   line-height: 1.4;
 }
 
-#chrome-shell-chat-window-container {
+.chrome-shell-chat-box-container {
   -webkit-box-flex: 1;
   flex: 1 1 auto;
   overflow-y: auto;
 }
 
-#chrome-shell-chat-window-footer {
+.chrome-shell-chat-input-container {
   -webkit-box-flex: 0;
-  -ms-flex: 0 0 auto;
   flex: 0 0 auto;
   padding: 0;
-  border-top: 1px solid #eee;
+  border-top: 1px solid #eeeeee;
+  min-height: 40px;
+  max-height: 90px;
+  overflow: hidden;
+}
+
+.chrome-shell-chat-input-wrapper {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-align: center;
+        align-items: center;
+  background-color: #fff;
   min-height: 40px;
   max-height: 90px;
   overflow: hidden;
@@ -136,7 +140,7 @@ html {
 
 .chrome-shell-chat-input {
   -webkit-box-flex: 1;
-  flex: 1;
+              flex: 1;
   border: 0;
   padding: 6px 12px;
   width: 100%;
@@ -146,27 +150,6 @@ html {
   max-width: 265px;
   max-height: 90px;
   resize: none;
-}
-
-.chrome-shell-chat-input-wrapper {
-  display: -webkit-box;
-  display: flex;
-  -webkit-box-align: center;
-  align-items: center;
-  background-color: #fff;
-  min-height: 40px;
-  max-height: 90px;
-  overflow: hidden;
-}
-
-.chrome-shell-message-container {
-  position: relative;
-  border-radius: 5px;
-  width: 200px;
-  height: 100px;
-  margin: 5px;
-  padding: 10px 18px;
-  text-align: left;
 }
 
 .chrome-shell-self-message {
@@ -182,6 +165,3 @@ html {
   float: left;
   margin-right: 20px;
 }
-
-
-
