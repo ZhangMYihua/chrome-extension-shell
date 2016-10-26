@@ -268,6 +268,22 @@ html {
   margin: 5px 10px 5px 20px;
 }
 
+.chrome-shell-chat-receiver-full::before {
+  position: absolute;
+  top: 0;
+  content: "\00a0";
+  display: block;
+  height: 16px;
+  width: 20px;
+  background-color: #fff;
+  transform: rotate(55deg) skew(-35deg);
+  -webkit-transform: rotate(55deg) skew(-35deg);
+}
+
+.chrome-shell-chat-receiver-full:before {
+  left: -5px;
+}
+
 /* Chatbox chat input */
 
 .chrome-shell-chat-input-container {
@@ -321,4 +337,24 @@ html {
   color: #263238;
   float: left;
   margin-right: 20px;
+}
+
+/* Screenshot crosshair */
+
+.boost-screenshot-crosshair {
+  cursor: crosshair;
+}
+
+.boost-screenshotty-container {
+  cursor: crosshair;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 2147483646;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -20,7 +20,7 @@
 															],
 
 	"background": {
-		"scripts" : [	
+		"scripts" : [
 									"assets/javascript/jquery-2.1.4.min.js",
 									"assets/javascript/lodash.min.js"
 								]
@@ -31,7 +31,9 @@
 			"run_at" : "document_idle",
 			"js": [	"assets/javascript/jquery-2.1.4.min.js",
               "assets/javascript/lodash.min.js",
-							"extension/javascript/messenger.js",
+              "extension/javascript/services/helper.js",
+              "extension/javascript/services/messenger.js",
+              "extension/javascript/services/screenshot.js",
 							"extension/javascript/content.js"
 						],
 			"css": [

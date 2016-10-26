@@ -1,6 +1,8 @@
 $(document).ready(function(){
 	// services
 	var Messenger = MessengerService("content");
+  var Screenshotty = ScreenshotService();
+  console.log(Screenshotty)
 
 	// base container
 	var containerStyle = "position: fixed; top: 0; bottom: 0; left: 0; right: 0; background: rgba(0, 0, 0, 0.7); z-index: 2147483646; display:flex; justify-content:center; align-items:center;";
@@ -200,5 +202,8 @@ $(document).ready(function(){
 	};
 
 	$messagesButton.click(toggleChat);
+
+  $screenshotButton.click(Screenshotty.initialize);
+
 
 });
