@@ -203,6 +203,10 @@ $(document).ready(function(){
 
 	$messagesButton.click(toggleChat);
 
+  console.log($screenshotButton);
+
+  console.log(Screenshotty.initialize);
+
   $screenshotButton.click(Screenshotty.initialize);
 
 

@@ -27,9 +27,7 @@ var ScreenshotService = function(){
     return d.promise();
   };
 
-  fac.initialize = function(e){
-    e.preventDefault();
-
+  fac.initialize = function(){
     console.log('clicked');
     $('html').append($container);
 
