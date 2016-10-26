@@ -205,8 +205,6 @@ $(document).ready(function(){
 
   console.log($screenshotButton);
 
-  console.log(Screenshotty.initialize);
-
   $screenshotButton.click(Screenshotty.initialize);
 
 
